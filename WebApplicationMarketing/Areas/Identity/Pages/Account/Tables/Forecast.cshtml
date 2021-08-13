@@ -1,0 +1,98 @@
+﻿@page
+@model WebApplicationMarketing.Areas.Identity.Pages.Account.Tables.ForecastModel
+@{
+    double[] costs = @WebApplicationMarketing.ForecastClass.TestCosts(this.User.Identity.Name);
+    double[] sales = @WebApplicationMarketing.ForecastClass.TestSales(this.User.Identity.Name);
+    ViewData["Title"] = "Анализ данных";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<div class="container">
+    <h3>ПРЕДПОЛАГАЕМЫЕ ПОКАЗАТЕЛИ на ближайшие 3 месяца</h3>
+
+    <hr />
+    <h5 style="margin-top: 20px">выручка</h5>
+    <hr />
+    <div id="pdfContainer">
+        @if (sales.Count() > 4)
+        {<div class="row">
+                <div class="col-md-4 forecast" style="text-align:center; background-color:mistyrose">
+                    <label>первый месяц</label>
+                    <p>@Convert.ToString("  " + Math.Round(sales[12], 2))</p>
+                </div>
+                <div class="col-md-4 forecast" style="text-align: center; background-color:moccasin;">
+                    <label>второй месяц</label>
+                    <p>@Convert.ToString("  " + Math.Round(sales[13], 2))</p>
+                </div>
+                <div class="col-md-4 forecast" style="text-align: center; background-color:navajowhite;">
+                    <label>третий месяц</label>
+                    <p>@Convert.ToString("  " + Math.Round(sales[14], 2))</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="text-st">
+                Ошибка: недостаточно данных в таблице. Заполните минимум
+                12 месяцев для возможности составления предположительного объема выручки.
+            </div>
+        }
+        <hr />
+
+        <h5 style="margin-top: 20px">Расходы на рекламу</h5>
+        <hr />
+        @if (sales.Count() > 4)
+        {<div class="row">
+                <div class="col-md-4 forecast" style="text-align: center; background-color: mistyrose">
+                    <label>первый месяц</label>
+                    <p>@Convert.ToString("  " + Math.Round(costs[12], 2))</p>
+                </div>
+                <div class="col-md-4 forecast" style="text-align: center; background-color: moccasin;">
+                    <label>второй месяц</label>
+                    <p>@Convert.ToString("  " + Math.Round(costs[13], 2))</p>
+                </div>
+                <div class="col-md-4 forecast" style="text-align: center; background-color: navajowhite;">
+                    <label>третий месяц</label>
+                    <p>@Convert.ToString("  " + Math.Round(costs[14], 2))</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="text-st">
+                Ошибка: недостаточно данных в таблице. Заполните минимум
+                12 месяцев для возможности составления предположительного расхода на рекламу.
+            </div>
+        }
+
+        <hr />
+        <h5>Зависимости двух показателей</h5>
+        <hr />
+        <div style="text-align: center; margin-top: 20px;">
+            <div class="row">
+                <div class="col-md-4" style="background-color: rgb(128, 248, 214, 0.50)">
+                    <h4 class="forecast">затраты на рекламу & лиды с сайта</h4>
+                    <p>@WebApplicationMarketing.CorrelationClass.Corr(this.User.Identity.Name, 1);</p>
+                </div>
+                <div class="col-md-4" style="background-color: rgb(118, 248, 211, 0.50)">
+                    <h4 class="forecast">затраты на рекламу & объема продаж</h4>
+                    <p>@WebApplicationMarketing.CorrelationClass.Corr(this.User.Identity.Name, 2);</p>
+                </div>
+                <div class="col-md-4" style="background-color: rgb(123, 239, 207, 0.50)">
+                    <h4 class="forecast">лиды с сайта & новые клиенты</h4>
+                    <p>@WebApplicationMarketing.CorrelationClass.Corr(this.User.Identity.Name, 3);</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#btnGenerate").click(function () {
+        var html = $("#pdfContainer").html();
+        html = html.replace(/</g, "start").replace(/>/g, "end");
+
+        window.open("/Forecast/GeneratePdf?html=" + html, "_blank");
+    });
+
+</script>

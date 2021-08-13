@@ -1,0 +1,56 @@
+﻿@model WebApplicationMarketing.Models_.IncomingTraffic
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>IncomingTraffic</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdIt" />
+            <div class="form-group">
+                <label asp-for="IncomTrafficGv" class="control-label"></label>
+                <input asp-for="IncomTrafficGv" class="form-control" />
+                <span asp-validation-for="IncomTrafficGv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IncomTrafficMop" class="control-label"></label>
+                <input asp-for="IncomTrafficMop" class="form-control" />
+                <span asp-validation-for="IncomTrafficMop" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewCardsSold" class="control-label"></label>
+                <input asp-for="NewCardsSold" class="form-control" />
+                <span asp-validation-for="NewCardsSold" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OpConversion" class="control-label"></label>
+                <input asp-for="OpConversion" class="form-control" />
+                <span asp-validation-for="OpConversion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataMonth" class="control-label"></label>
+                <input asp-for="DataMonth" class="form-control" />
+                <span asp-validation-for="DataMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <select asp-for="Id" class="form-control" asp-items="ViewBag.Id"></select>
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

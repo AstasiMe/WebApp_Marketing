@@ -1,0 +1,40 @@
+﻿@model WebApplicationMarketing.Models_.InsideClub
+
+@{
+    ViewData["Title"] = "Удалить";
+}
+
+<h3>Удалить данные</h3>
+
+<h5>Вы уверены что хотите удалить эти данные?</h5>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">Гостевые визиты</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.GuestVisits)
+        </dd>
+        <dt class="col-sm-4">Звонки на телефон МОП</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CallsMopPhone)
+        </dd>
+        <dt class="col-sm-4">Звонки на телефон рецепция</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CallsReceptPhone)
+        </dd>
+        <dt class="col-sm-4">Коллтрекинг, сквозаня аналитика лиды </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Calltracking)
+        </dd>
+        <dt class="col-sm-4">Другие лиды</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.OtherLeads)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdIc" />
+        <input type="submit" value="Удалить" class="btn btn-danger" style="margin-right: 10px;" />
+        <a class="btn btn-success" asp-action="Index">Отмена</a>
+    </form>
+</div>

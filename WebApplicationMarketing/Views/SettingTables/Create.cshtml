@@ -1,0 +1,102 @@
+﻿
+@using Microsoft.AspNet.Identity;
+
+@model WebApplicationMarketing.Models_.SettingTable
+
+@{
+    ViewData["Title"] = "Настройка таблиц";
+    string id_user = User.Identity.GetUserId();
+
+
+    //MethodClass.GetElement(this.User.Identity.Name, 2);
+
+
+}
+
+<h3>Настройка набора таблиц</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label id="div_select1" asp-for="IncomingTraffics" class="control-label selected_la" style="width: 240px; padding: 5px; text-align: center;">входящий трафик</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="btn btn-primary" type="button" value="добавить" onclick="inputValueTrue('incom-traf','div_select1');">
+                        <input class="btn btn-primary" type="button" value="скрыть" onclick="inputValueFalse('incom-traf','div_select1');">
+                        <input type="hidden" id="incom-traf" asp-for="IncomingTraffics" class="form-control input-none" value="false" />
+                        <span asp-validation-for="IncomingTraffics" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label id="div_select2" asp-for="InsideClubs" class="control-label selected_la" style="width: 240px; padding: 5px; text-align: center;">внутри клуба</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="btn btn-primary" type="button" value="добавить" onclick="inputValueTrue('inside-clubs','div_select2');">
+                        <input class="btn btn-primary" type="button" value="скрыть" onclick="inputValueFalse('inside-clubs','div_select2');">
+                        <input type="hidden" id="inside-clubs" asp-for="InsideClubs" class="form-control input-none" value="false" />
+                        <span asp-validation-for="InsideClubs" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label id="div_select3" asp-for="KeysIndicators" class="control-label selected_la" style="width: 240px; padding: 5px; text-align: center;">ключевые показатели</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="btn btn-primary" type="button" value="добавить" onclick="inputValueTrue('keys-ind','div_select3');">
+                        <input class="btn btn-primary" type="button" value="скрыть" onclick="inputValueFalse('keys-ind','div_select3');">
+                        <input type="hidden" id="keys-ind" asp-for="KeysIndicators" class="form-control input-none" value="false" />
+                        <span asp-validation-for="KeysIndicators" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label id="div_select4" asp-for="OnlinePays" class="control-label selected_la" style="width: 240px; padding: 5px; text-align: center;">онлайн покупки</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="btn btn-primary" type="button" value="добавить" onclick="inputValueTrue('onl-pay','div_select4');">
+                        <input class="btn btn-primary" type="button" value="скрыть" onclick="inputValueFalse('onl-pay','div_select4');">
+                        <input type="hidden" id="onl-pay" asp-for="OnlinePays" class="form-control input-none" value="false" />
+                        <span asp-validation-for="OnlinePays" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label id="div_select5" asp-for="SocialMediums" class="control-label selected_la" style="width: 240px; padding: 5px; text-align: center;">социальные сети</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input class="btn btn-primary" type="button" value="добавить" onclick="inputValueTrue('soc-med','div_select5');">
+                        <input class="btn btn-primary" type="button" value="скрыть" onclick="inputValueFalse('soc-med','div_select5');">
+                        <input type="hidden" id="soc-med" asp-for="SocialMediums" class="form-control input-none" value="false" />
+                        <span asp-validation-for="SocialMediums" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <input asp-for="Id" class="input-none" value="@id_user" readonly />
+                @*<select asp-for="Id" class="form-control" asp-items="ViewBag.Id"></select>*@
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+

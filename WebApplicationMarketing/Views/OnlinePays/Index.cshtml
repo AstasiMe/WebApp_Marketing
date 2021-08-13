@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebApplicationMarketing.Models_.OnlinePay>
+
+@{
+    ViewData["Title"] = "Онлайн оплаты";
+}
+
+<div class="table-wrap">
+    <table class="table-1">
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var item in Model)
+                {
+                    <th>
+                        <div>@Convert.ToString(string.Format("{0:Y}", item.DataMonth))</div>
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Покупки на сайте (руб)</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaySiteRub)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Покупки на сайте (шт)</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaySiteCount)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Онлайн продажи</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OnlineSales)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Средний чек</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AverageCheck)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Конверсия в покупку</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PayConversion)
+                    </td>
+                }
+            </tr>
+            <tr class="delete">
+                <th class="delete"></th>
+                @foreach (var item in Model)
+                {
+                    <td class="delete">
+                        <a asp-action="Delete" asp-route-id="@item.IdOp"><img src="~/trash-alt-regular.svg" width="20" height="20"></a>
+                    </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<a class="btn btn-success" asp-area="Identity" asp-page="/Account/Tables/_MyPage">Назад</a>
+<a class="btn btn-primary" asp-action="Create">Добавить данные</a>
+

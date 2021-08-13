@@ -1,0 +1,40 @@
+﻿@model WebApplicationMarketing.Models_.OnlinePay
+
+@{
+    ViewData["Title"] = "Удалить";
+}
+
+<h3>Удалить данные</h3>
+
+<h5>Вы уверены что хотите удалить эти данные?</h5>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">Покупки на сайте (руб)</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.PaySiteRub)
+        </dd>
+        <dt class="col-sm-4">Покупки на сайте (шт)</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.PaySiteCount)
+        </dd>
+        <dt class="col-sm-4">Онлайн продажи</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.OnlineSales)
+        </dd>
+        <dt class="col-sm-4">Средний чек</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.AverageCheck)
+        </dd>
+        <dt class="col-sm-4">Конверсия в покупку</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.PayConversion)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdOp" />
+        <input type="submit" value="Удалить" class="btn btn-danger" style="margin-right: 10px;" />
+        <a class="btn btn-success" asp-action="Index">Отмена</a>
+    </form>
+</div>

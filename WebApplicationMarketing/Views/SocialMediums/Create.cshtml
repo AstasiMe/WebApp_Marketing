@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNet.Identity;
+@model WebApplicationMarketing.Models_.SocialMedium
+
+@{
+    ViewData["Title"] = "Добавить данные";
+    string id_user = User.Identity.GetUserId();
+}
+
+<h3>Добавить данные</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LeadsVk" class="control-label">Лиды с ВКонтакте</label>
+                <input asp-for="LeadsVk" class="form-control" />
+                <span asp-validation-for="LeadsVk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherLeads" class="control-label">Другие лиды</label>
+                <input asp-for="OtherLeads" class="form-control" />
+                <span asp-validation-for="OtherLeads" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataMonth" class="control-label">Дата</label>
+                <input asp-for="DataMonth" class="form-control" />
+                <span asp-validation-for="DataMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <input asp-for="Id" class="input-none" value="@id_user" readonly />
+                @*<select asp-for="Id" class="form-control" asp-items="ViewBag.Id"></select>*@
+            </div>
+        </form>
+    </div>
+</div>
+

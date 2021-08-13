@@ -1,0 +1,72 @@
+﻿@page
+@{
+    ViewData["Title"] = "Мой профиль";
+}
+
+<div class="container-content">
+    <div class="row">
+        <div class="col-md-3">
+            <partial name="ViewLink" />
+        </div>
+        <div class="col-md-6">
+            <partial name="Graph" />
+        </div>
+        <div class="col-md-3">
+            <div class="calendar_section">
+                <table id="calendar">
+                    <thead>
+                        <tr>
+                            <td><b>‹</b>
+                            <td colspan="5">
+                            <td><b>›</b>
+                        <tr class="dn"><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="todolist_section">
+                <h6 class="todo__caption">Список задач</h6>
+                <div id="tdlApp">
+                    <input type="text" class="form-control" placeholder="Новая задача">
+                    <div class="tdlDiv">
+                        <ul class="tdList list-unstyled">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="calculator_section">
+                <div id="calculator">
+                    <div class="top">
+                        <span class="clear">C</span>
+                        <div class="screen"></div>
+                    </div>
+                    <div class="keys">
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span class="operator">+</span>
+                    </div>
+                    <div class="keys">
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span class="operator">-</span>
+                    </div>
+                    <div class="keys">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span class="operator">÷</span>
+                    </div>
+                    <div class="keys">
+                        <span>0</span>
+                        <span>.</span>
+                        <span class="eval">=</span>
+                        <span class="operator">x</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

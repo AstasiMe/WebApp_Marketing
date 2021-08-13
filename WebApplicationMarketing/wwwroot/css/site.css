@@ -1,0 +1,443 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+* {
+    outline: none;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+}
+
+main {
+    height: 100%;
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.container-content {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.col-md-2 {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Section calendar */
+
+#calendar {
+    width: 100%;
+    height: 190px;
+    /*    line-height: 1.2em;*/
+    font-size: 15px;
+    text-align: center;
+    border-spacing: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+    #calendar tr.dn td {
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    #calendar thead tr:last-child {
+        font-size: small;
+        color: #555555;
+    }
+
+    #calendar thead tr:nth-child(1) td:nth-child(2) {
+        color: #323232;
+    }
+
+    #calendar thead tr:nth-child(1) td:nth-child(1):hover,
+    #calendar thead tr:nth-child(1) td:nth-child(3):hover {
+        cursor: pointer;
+    }
+
+    #calendar tbody td {
+        color: #2c567a;
+    }
+
+        #calendar tbody td:nth-child(n+6)
+        #calendar .holiday {
+            /*   color: #e78c5c;*/
+            color: #686346;
+        }
+
+        #calendar tbody td.today {
+            background: rgba(28, 97, 122, 0.37);
+            color: #201513;
+            border-radius: 5px;
+            box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.15);
+        }
+
+/* Section To Do list */
+
+.todolist_section {
+    margin-top: 30px;
+    padding: 15px;
+    width: 100%;
+    /*    line-height: 1.2em;*/
+    font-size: 15px;
+    text-align: center;
+    border-spacing: 0px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #06293711;
+    border-radius: 5px;
+}
+
+.form-control {
+    display: inline-block;
+    /*  border: 1px solid #898989;*/
+    padding: 10px 10px;
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 9px;
+}
+
+.tdItem {
+    text-align: left;
+    padding: 4px;
+    cursor: default;
+    border-radius: 7px;
+    margin: 5px;
+    box-shadow: 0px 5px 10px 2px rgba(0,0,0,0.15);
+    background-color: white;
+    word-wrap: break-word;
+}
+
+/*Input*/
+
+.input-none {
+    visibility: hidden;
+}
+
+.btn-page {
+    width: 100%;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    /*  background-color: rgb(30 103 129);
+    border-color: rgb(30 103 129);
+    transition: all 0.5s ease;*/
+}
+
+/*   .btn-page:hover {
+        background-color: rgb(24, 90, 114);
+        border-color: rgb(24, 90, 114);
+    }*/
+
+.link_page {
+    outline: none;
+    text-decoration: none;
+    color: dimgray;
+}
+
+    .link_page:hover {
+        text-decoration: none;
+        opacity: 0.6;
+        color: dimgray;
+    }
+
+.nav_link_page {
+    transition: all 0.5s ease;
+}
+
+    .nav_link_page:hover {
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+.vertical {
+    writing-mode: vertical-lr;
+    text-orientation: sideways-right;
+}
+
+/*Table*/
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table.table-1 {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: auto;
+}
+
+    table.table-1 tr {
+        background-color: #f8f8f8;
+        align-content: center;
+        text-align: center;
+    }
+
+    table.table-1 th, table.table-1 td {
+        padding: 4px;
+        border: 1px solid #ddd;
+        align-content: center;
+        text-align: center;
+    }
+
+    table.table-1 th {
+        font-weight: bold;
+    }
+
+    table.table-1 tr .delete {
+        background-color: white;
+        border: none;
+    }
+
+    table.table-1 tr th .delete {
+        background-color: white;
+        border: none;
+    }
+
+.hi {
+    height: 300px;
+}
+
+.hi_big {
+    height: 400px;
+}
+
+.index_page {
+    font-size: 60px;
+    text-align: center;
+}
+
+.container-index {
+    height: auto;
+    box-shadow: 0px 5px 10px 2px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+
+.text-st {
+    font-size: 30px;
+}
+
+.border-div {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding-bottom: 10px;
+}
+
+.select_table {
+    background-color: rgb(35, 197, 51, 0.31);
+    border-radius: 15px;
+    transition: all 0.5s ease;
+    padding: 5px;
+    text-align: center;
+    align-items: center;
+}
+
+.selected {
+    background-color: rgb(197, 45, 35, 0.31);
+    border-radius: 15px;
+    transition: all 0.5s ease;
+    padding: 5px;
+    text-align: center;
+    align-items: center;
+}
+
+/*Калькулятор*/
+
+/* Using box shadows to create 3D effects */
+#calculator {
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+    padding: 20px 20px 9px;
+    background: #9dd2ea;
+    background: linear-gradient(#9dd2ea, #8bceec);
+    border-radius: 3px;
+    box-shadow: 0px 4px #009de4, 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Top portion */
+.top span.clear {
+    float: left;
+}
+
+/* Inset shadow on the screen to create indent */
+.top .screen {
+    height: 40px;
+    width: 73%;
+    float: right;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+    /* Typography */
+    font-size: 17px;
+    line-height: 40px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    text-align: right;
+    letter-spacing: 1px;
+    margin-bottom: 9px;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+}
+
+/* Clear floats */
+.keys, .top {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    /* Applying same to the keys */
+    .keys span, .top span.clear {
+        float: left;
+        position: relative;
+        top: 0;
+        cursor: pointer;
+        min-width: 22%;
+        height: 36px;
+        background: white;
+        border-radius: 3px;
+        box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+        margin: 0 7px 11px 0;
+        color: #888;
+        line-height: 36px;
+        text-align: center;
+        /* prevent selection of text inside keys */
+        user-select: none;
+        /* Smoothing out hover and active states using css3 transitions */
+        transition: all 0.2s ease;
+    }
+
+        /* Remove right margins from operator keys */
+        /* style different type of keys (operators/evaluate/clear) differently */
+        .keys span.operator {
+            background: #FFF0F5;
+            margin-right: 0;
+        }
+
+        .keys span.eval {
+            background: rgb(255, 213, 79, 0.88);
+            box-shadow: 0px 4px #9da853;
+            color: #888e5f;
+        }
+
+    .top span.clear {
+        background: rgb(221, 44, 0, 0.88);
+        box-shadow: 0px 4px #ff7c87;
+        color: white;
+    }
+
+    /* Some hover effects */
+    .keys span:hover {
+        background: #9c89f6;
+        box-shadow: 0px 4px #6b54d3;
+        color: white;
+    }
+
+    .keys span.eval:hover {
+        background: #abb850;
+        box-shadow: 0px 4px #717a33;
+        color: #ffffff;
+    }
+
+    .top span.clear:hover {
+        background: #f68991;
+        box-shadow: 0px 4px #d3545d;
+        color: white;
+    }
+
+    /* Simulating "pressed" effect on active state of the keys by removing the box-shadow and moving the keys down a bit */
+    .keys span:active {
+        box-shadow: 0px 0px #6b54d3;
+        top: 4px;
+    }
+
+    .keys span.eval:active {
+        box-shadow: 0px 0px #717a33;
+        top: 4px;
+    }
+
+    .top span.clear:active {
+        top: 4px;
+        box-shadow: 0px 0px #d3545d;
+    }
+
+.forecast {
+    font-size: 20px;
+    padding-top: 15px;
+    border-radius: 5px;
+}

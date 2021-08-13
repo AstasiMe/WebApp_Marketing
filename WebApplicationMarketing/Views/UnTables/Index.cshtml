@@ -1,0 +1,163 @@
+﻿
+@model IEnumerable<WebApplicationMarketing.Models_.UnTable>
+
+@{
+    ViewData["Title"] = "Универсальный отчет";
+    ViewData["ActivePage"] = WebApplicationMarketing.Views.NavClass.Index;
+}
+
+
+<div class="table-wrap">
+    <table class="table-1">
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var item in Model)
+                {
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <th>
+                            <div>@Convert.ToString(string.Format("{0:Y}", item.DataMonth))</div>
+                        </th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Объём продаж (руб)</th>
+                @foreach (var item in Model)
+                {
+
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sales)
+                        </td>
+                    }
+
+                }
+            </tr>
+            <tr>
+                <th>Объем продаж (шт)</th>
+                @foreach (var item in Model)
+                {
+
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SalesCount)
+                        </td>
+                    }
+
+                }
+            </tr>
+            <tr>
+                <th>Расход на рекламу</th>
+                @foreach (var item in Model)
+                {
+
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdvertisingCosts)
+                        </td>
+                    }
+
+                }
+            </tr>
+            <tr>
+                <th>Новые посетители</th>
+                @foreach (var item in Model)
+                {
+
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NewVisitors)
+                        </td>
+                    }
+
+                }
+            </tr>
+            <tr>
+                <th>Лиды с сайта</th>
+                @foreach (var item in Model)
+                {
+
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SiteLeads)
+                        </td>
+                    }
+
+                }
+            </tr>
+            <tr>
+                <th>Новые клиенты</th>
+
+                @foreach (var item in Model)
+                {
+
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NewClient)
+                        </td>
+                    }
+
+                }
+
+            </tr>
+            <tr>
+                <th>Заявки с телефона</th>
+                @foreach (var item in Model)
+                {
+
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApplicPhone)
+                        </td>
+                    }
+
+                }
+            </tr>
+            <tr>
+                <th>Заявки с соц. сетей</th>
+
+                @foreach (var item in Model)
+                {
+
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApplicSocial)
+                        </td>
+                    }
+
+                }
+            </tr>
+            <tr class="delete">
+                <th class="delete"></th>
+                @foreach (var item in Model)
+                {
+                    @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                    {
+                        <td class="delete">
+                            <a asp-action="Delete" asp-route-id="@item.IdUt">
+                                <img src="~/trash-alt-regular.svg"
+                                     width="20" height="20">
+                            </a>
+                        </td>
+                    }
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<a class="btn btn-success" asp-area="Identity" asp-page="/Account/Tables/_MyPage">Назад</a>
+<a class="btn btn-primary" asp-action="Create">Добавить данные</a>

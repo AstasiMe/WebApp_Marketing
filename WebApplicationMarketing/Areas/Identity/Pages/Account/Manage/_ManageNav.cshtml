@@ -1,0 +1,21 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">О пользователе</a></li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Пароль</a></li>
+
+    @{
+        if (WebApplicationMarketing.MethodClass.GetId(this.User.Identity.Name) != 0)
+        {
+            <li class="nav-item"><a class="nav-link @ManageNavPages.TablesSettingNavClass(ViewContext)" id="tables-setting" asp-controller="SettingTables" asp-action="Index">Настройка таблиц</a></li>
+        }
+        else
+        {
+            <li class="nav-item"><a class="nav-link @ManageNavPages.TablesSettingNavClass(ViewContext)" id="tables-setting" asp-controller="SettingTables" asp-action="Create">Настройка таблиц</a></li>
+        }
+    }
+
+
+</ul>

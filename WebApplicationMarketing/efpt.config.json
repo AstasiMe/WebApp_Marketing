@@ -1,0 +1,92 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "MyappdbContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": "Data_",
+   "OutputPath": "Models_",
+   "ProjectRootNamespace": "WebApplicationMarketing",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "public.AspNetUserTokens",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.AspNetRoles",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.social_media",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.AspNetRoleClaims",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.setting_table",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.AspNetUserClaims",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.inside_club",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.AspNetUserRoles",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.AspNetUsers",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.incoming_traffic",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.key_indicators",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.online_pay",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.addlinks",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.AspNetUserLogins",
+         "ObjectType": 0
+      },
+      {
+         "Name": "public.un_table",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "MyAppDB",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}

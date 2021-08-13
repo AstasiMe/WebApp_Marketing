@@ -1,0 +1,34 @@
+﻿@model WebApplicationMarketing.Models_.IncomingTraffic
+
+@{
+    ViewData["Title"] = "Удалить данные";
+}
+
+<h3>Удалить данные</h3>
+<h5>Вы действительно хотите удалить эти данные?</h5>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">Входящий трафик из интернета</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IncomTrafficGv)
+        </dd>
+        <dt class="col-sm-4">Входящий трафик всего (МОП)</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IncomTrafficMop)
+        </dd>
+        <dt class="col-sm-4">Продано новых карт</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.NewCardsSold)
+        </dd>
+        <dt class="col-sm-4">Конверсия ОП</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.OpConversion)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdIt" />
+        <input type="submit" value="Удалить" class="btn btn-danger" style="margin-right: 10px;" />
+        <a class="btn btn-success" asp-action="Index">Отмена</a>
+    </form>
+</div>

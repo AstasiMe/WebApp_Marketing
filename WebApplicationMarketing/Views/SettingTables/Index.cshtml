@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WebApplicationMarketing.Models_.SettingTable>
+
+@{
+    ViewData["Title"] = "Настройка таблиц";
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Ваши активные таблицы:
+            </th>
+
+            @*<th>
+                    @Html.DisplayNameFor(model => model.IncomingTraffics)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InsideClubs)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KeysIndicators)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OnlinePays)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SocialMediums)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdNavigation)
+                </th>
+                <th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 1) == true)
+                        { <p>Входящий трафик</p>}
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 2) == true)
+                        { <p>Внутри клуба</p>}
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 3) == true)
+                        { <p>Ключевые показатели</p>}
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 4) == true)
+                        { <p>Онлайн покупки</p>}
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 5) == true)
+                        { <p>Социальные сети</p>}
+                    }
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.IdSt">Обновить данные</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

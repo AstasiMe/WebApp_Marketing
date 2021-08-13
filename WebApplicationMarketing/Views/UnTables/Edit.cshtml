@@ -1,0 +1,76 @@
+﻿@model WebApplicationMarketing.Models_.UnTable
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>UnTable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdUt" />
+            <div class="form-group">
+                <label asp-for="Sales" class="control-label"></label>
+                <input asp-for="Sales" class="form-control" />
+                <span asp-validation-for="Sales" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalesCount" class="control-label"></label>
+                <input asp-for="SalesCount" class="form-control" />
+                <span asp-validation-for="SalesCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdvertisingCosts" class="control-label"></label>
+                <input asp-for="AdvertisingCosts" class="form-control" />
+                <span asp-validation-for="AdvertisingCosts" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewVisitors" class="control-label"></label>
+                <input asp-for="NewVisitors" class="form-control" />
+                <span asp-validation-for="NewVisitors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SiteLeads" class="control-label"></label>
+                <input asp-for="SiteLeads" class="form-control" />
+                <span asp-validation-for="SiteLeads" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewClient" class="control-label"></label>
+                <input asp-for="NewClient" class="form-control" />
+                <span asp-validation-for="NewClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicPhone" class="control-label"></label>
+                <input asp-for="ApplicPhone" class="form-control" />
+                <span asp-validation-for="ApplicPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicSocial" class="control-label"></label>
+                <input asp-for="ApplicSocial" class="form-control" />
+                <span asp-validation-for="ApplicSocial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataMonth" class="control-label"></label>
+                <input asp-for="DataMonth" class="form-control" />
+                <span asp-validation-for="DataMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <select asp-for="Id" class="form-control" asp-items="ViewBag.Id"></select>
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

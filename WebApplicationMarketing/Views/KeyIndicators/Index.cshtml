@@ -1,0 +1,135 @@
+﻿@model IEnumerable<WebApplicationMarketing.Models_.KeyIndicator>
+
+@{
+    ViewData["Title"] = "Ключевые показатели";
+}
+
+<div class="table-wrap">
+    <table class="table-1">
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var item in Model)
+                {
+                    <th>
+                        <div>@Convert.ToString(string.Format("{0:Y}", item.DataMonth))</div>
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Лиды с сайта</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeadsSite)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Новые посетители сайтов</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewVisitorsSite)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Лиды с лендингов</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeadsLandingPages)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Новые посетители лендингов</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewVisitorsLandingPages)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Лидов всего с сайтов</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AllLeadsSites)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Стоимость цели</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GoalsAdvertising)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Затраты на продвижение сайта</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SpentWebsitePromotion)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Средняя стоимость лида с сайтов</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CostLeadSites)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Затраты на рекламу</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TargetCost)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Новые посетители с веб-сайта</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewWebsiteVisitors)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>E-Mail подписка</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MailSubsShares)
+                    </td>
+                }
+            </tr>
+            <tr class="delete">
+                <th class="delete"></th>
+                @foreach (var item in Model)
+                {
+                    <td class="delete">
+                        <a asp-action="Delete" asp-route-id="@item.IdKi"><img src="~/trash-alt-regular.svg" width="20" height="20"></a>
+                    </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<a class="btn btn-success" asp-area="Identity" asp-page="/Account/Tables/_MyPage">Назад</a>
+<a class="btn btn-primary" asp-action="Create">Добавить данные</a>

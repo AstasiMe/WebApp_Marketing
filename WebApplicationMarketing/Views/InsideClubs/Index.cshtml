@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WebApplicationMarketing.Models_.InsideClub>
+
+@{
+    ViewData["Title"] = "Внутри клуба";
+}
+
+<div class="table-wrap">
+    <table class="table-1">
+        <thead>
+            <tr>
+                <th></th>
+                @foreach (var item in Model)
+                {
+                    <th>
+                        <div>@Convert.ToString(string.Format("{0:Y}", item.DataMonth))</div>
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Гостевые визиты</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GuestVisits)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Звонки на телефон МОП</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CallsMopPhone)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Звонки на телефон рецепция</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CallsReceptPhone)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Коллтрекинг, сквозаня аналитика лиды</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Calltracking)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <th>Другие лиды</th>
+                @foreach (var item in Model)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OtherLeads)
+                    </td>
+                }
+            </tr>
+            <tr class="delete">
+                <th class="delete"></th>
+                @foreach (var item in Model)
+                {
+                    <td class="delete">
+                        <a asp-action="Delete" asp-route-id="@item.IdIc"><img src="~/trash-alt-regular.svg" width="20" height="20"></a>
+                    </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<a class="btn btn-success" asp-area="Identity" asp-page="/Account/Tables/_MyPage">Назад</a>
+<a class="btn btn-primary" asp-action="Create">Добавить данные</a>

@@ -1,0 +1,68 @@
+﻿@model WebApplicationMarketing.Models_.KeyIndicator
+@{
+    ViewData["Title"] = "Удалить";
+}
+
+<h3>Удалить данные</h3>
+
+<h5>Вы уверены что хотите удалить эти данные?</h5>
+<div>
+    <h4>KeyIndicator</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">Лиды с сайта</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.LeadsSite)
+        </dd>
+        <dt class="col-sm-4">Новые посетители с сайтов</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.NewVisitorsSite)
+        </dd>
+        <dt class="col-sm-4">Лиды с лендингов</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.LeadsLandingPages)
+        </dd>
+        <dt class="col-sm-4">Новые посетители лендингов</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.NewVisitorsLandingPages)
+        </dd>
+        <dt class="col-sm-4">Лидов всего с сайтов</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.AllLeadsSites)
+        </dd>
+        <dt class="col-sm-4">Стоимость цели</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.GoalsAdvertising)
+        </dd>
+        <dt class="col-sm-4">Затраты на продвижение сайта</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.SpentWebsitePromotion)
+        </dd>
+        <dt class="col-sm-4">Средняя стоимость лида с сайтов</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.CostLeadSites)
+        </dd>
+        <dt class="col-sm-4">Затраты на продвижение сайтов</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.TargetCost)
+        </dd>
+        <dt class="col-sm-4">Новые посетители с веб-сайта</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.NewWebsiteVisitors)
+        </dd>
+        <dt class="col-sm-4">E-Mail подписка</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.MailSubsShares)
+        </dd>
+        <dt class="col-sm-4">Дата</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.DataMonth)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdKi" />
+        <input type="submit" value="Удалить" class="btn btn-danger" style="margin-right: 10px;" />
+        <a class="btn btn-success" asp-action="Index">Отмена</a>
+    </form>
+</div>

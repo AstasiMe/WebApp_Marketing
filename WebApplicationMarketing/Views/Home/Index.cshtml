@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Главная страница";
+}
+
+<div class="text-center">
+    <div class="container container-index">
+        <p class="index_page">App Marketing</p>
+        <p style="font-size: 25px;">платформа анализа продаж для малого предприятия</p>
+        @if (SignInManager.IsSignedIn(User))
+        { }
+        else
+        {
+            <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">НАЧАТЬ РАБОТУ</a>
+        }
+    </div>
+    <div class="container container-index">
+
+        <p style="font-size: 25px">Что входит в платформу?</p>
+        <div class="row">
+            <div class="col-sm-4">Ведение отчетности</div>
+            <div class="col-sm-4">Анализ данных</div>
+            <div class="col-sm-4">Отображение данных в виде графиков и диаграмм</div>
+        </div>
+    </div>
+</div>
+
+
+

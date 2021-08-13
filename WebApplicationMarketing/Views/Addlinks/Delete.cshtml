@@ -1,0 +1,32 @@
+﻿@model WebApplicationMarketing.Models_.Addlink
+
+@{
+    ViewData["Title"] = "Удалить";
+}
+
+<h3>Удалить ссылки</h3>
+
+<h5>Вы уверены что хотите удалить ссылки?</h5>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            ЯндексМетрика
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.YandexLink)
+        </dd>
+        <dt class="col-sm-4">
+            Google Analitycs
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.GaLink)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdLink" />
+        <input type="submit" value="Удалить" class="btn btn-danger" style="margin-right: 10px;" />
+        <a class="btn btn-success" asp-action="Index">Отмена</a>
+    </form>
+</div>

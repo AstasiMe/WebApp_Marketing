@@ -1,0 +1,345 @@
+﻿@using WebApplicationMarketing.Data_;
+@using WebApplicationMarketing.Models_;
+@using Newtonsoft.Json;
+@using Nancy.Json;
+
+
+@{
+    MyappdbContext db = new MyappdbContext();
+
+    List<UnTable> tb;
+    tb = (from m in db.UnTables
+          select m).ToList();
+
+
+    var query = (from t in tb
+                 join g in db.AspNetUsers on t.Id equals g.Id
+                 where t.IdNavigation.UserName == this.User.Identity.Name
+                 orderby t.DataMonth descending
+                 select new
+                 {
+                     t.NewVisitors,
+                     t.DataMonth,
+                     t.NewClient,
+                     t.Sales,
+                     t.AdvertisingCosts,
+                     t.SiteLeads,
+                     t.ApplicPhone,
+                     t.ApplicSocial,
+                     t.SalesCount
+                 }).ToList();
+
+    int[] array = new int[query.Count];
+    int[] new_client = new int[query.Count];
+    int[] sales = new int[query.Count];
+    double[] costs = new double[query.Count];
+    int[] leads = new int[query.Count];
+    int[] phone = new int[query.Count];
+    int[] social = new int[query.Count];
+    int[] sales_c = new int[query.Count];
+    DateTime[] data_ = new DateTime[query.Count];
+
+    for (int i = 0; i < query.Count(); i++)
+    {
+        data_[i] = Convert.ToDateTime(query[i].DataMonth);
+        array[i] = Convert.ToInt32(query[i].NewVisitors);
+        new_client[i] = Convert.ToInt32(query[i].NewClient);
+        sales[i] = Convert.ToInt32(query[i].Sales);
+        costs[i] = Convert.ToDouble(query[i].AdvertisingCosts);
+        leads[i] = Convert.ToInt32(query[i].SiteLeads);
+        phone[i] = Convert.ToInt32(query[i].ApplicPhone);
+        social[i] = Convert.ToInt32(query[i].ApplicSocial);
+        sales_c[i] = Convert.ToInt32(query[i].SalesCount);
+    }
+}
+
+<div class="hi" id="cont_new_visitors" style="margin-bottom: 10px; text-align: center"></div>
+<div id="container_err" style="margin-bottom: 10px; text-align: center"></div>
+
+<div class="row">
+    <div class="col-md-6" style="margin-bottom: 10px">
+        <div class="hi" id="container_pie"></div>
+    </div>
+    <div class="col-md-6" style="margin-bottom: 10px">
+        <div class="hi" id="cont_new_client"></div>
+    </div>
+</div>
+<div class="hi_big" id="container" style="margin-bottom: 10px"></div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="hi" id="container_" style="margin-bottom: 10px"></div>
+    </div>
+    <div class="col-md-6">
+        <div class="hi" id="container_pie_count"></div>
+    </div>
+</div>
+
+
+@{
+    if (data_.Count() > 11)
+    {
+        <script type="text/javascript">
+
+    anychart.onDocumentLoad(function () {
+        var data = [
+            ['@data_[11].Month',@array[11]],
+            ['@data_[10].Month',@array[10]],
+            ['@data_[9].Month',@array[9]],
+            ['@data_[8].Month',@array[8]],
+            ['@data_[7].Month',@array[7]],
+            ['@data_[6].Month',@array[6]],
+            ['@data_[5].Month',@array[5]],
+            ['@data_[4].Month',@array[4]],
+            ['@data_[3].Month',@array[3]],
+            ['@data_[2].Month',@array[2]],
+            ['@data_[1].Month',@array[1]],
+            ['@data_[0].Month',@array[0]],
+        ];
+
+        var dataSet = anychart.data.set(data);
+        var mapping = dataSet.mapAs({ x: 0, value: 1 });
+        var chart = anychart.column();
+        var series = chart.column(mapping);
+        chart.title("Новые посетители");
+        chart.container("cont_new_visitors").draw();
+    });
+
+    anychart.onDocumentLoad(function () {
+        var data = [
+            ['@data_[11].Month',@new_client[11]],
+            ['@data_[10].Month',@new_client[10]],
+            ['@data_[9].Month',@new_client[9]],
+            ['@data_[8].Month',@new_client[8]],
+            ['@data_[7].Month',@new_client[7]],
+            ['@data_[6].Month',@new_client[6]],
+            ['@data_[5].Month',@new_client[5]],
+            ['@data_[4].Month',@new_client[4]],
+            ['@data_[3].Month',@new_client[3]],
+            ['@data_[2].Month',@new_client[2]],
+            ['@data_[1].Month',@new_client[1]],
+            ['@data_[0].Month',@new_client[0]]
+        ];
+
+        var dataSet = anychart.data.set(data);
+        var mapping = dataSet.mapAs({ x: 0, value: 1 });
+        var chart = anychart.column();
+        var series = chart.column(mapping);
+        chart.title("Новые клиенты");
+        chart.container("cont_new_client").draw();
+    });
+
+    anychart.onDocumentReady(function () {
+
+        anychart.theme('morning');
+
+        var chart = anychart.pie([
+            ['@data_[11].Month',@sales[11]],
+            ['@data_[10].Month',@sales[10]],
+            ['@data_[9].Month',@sales[9]],
+            ['@data_[8].Month',@sales[8]],
+            ['@data_[7].Month',@sales[7]],
+            ['@data_[6].Month',@sales[6]],
+            ['@data_[5].Month',@sales[5]],
+            ['@data_[4].Month',@sales[4]],
+            ['@data_[3].Month',@sales[3]],
+            ['@data_[2].Month',@sales[2]],
+            ['@data_[1].Month',@sales[1]],
+            ['@data_[0].Month',@sales[0]]
+        ]);
+
+        chart
+            .title('Общий объем продаж (₽)')
+            .radius('45%')
+            .innerRadius('30%');
+
+        chart.container('container_pie');
+        chart.draw();
+    });
+
+    anychart.onDocumentReady(function () {
+        anychart.theme('pastel');
+        var dataSet = anychart.data.set(getData());
+
+        var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+        var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+
+
+
+        var chart = anychart.area();
+        chart.animation(true);
+        var crosshair = chart.crosshair();
+        crosshair.enabled(true).yLabel(false).yStroke(null).xStroke('#fff');
+
+
+        chart.title(
+            'Лиды и траты на рекламу зависимость'
+        );
+
+
+        chart.interactivity().hoverMode('by-x');
+        chart.tooltip().displayMode('union');
+
+        chart.yAxis(0).labels().format('{%Value}');
+        chart.xAxis(1).orientation('top');
+        chart.yAxis(1).orientation('right').labels(false);
+
+        chart.tooltip().format('{%SeriesName}: {%Value}');
+
+        var setupSeries = function (series, name) {
+            series.name(name);
+            series.markers().zIndex(100);
+            series
+                .hovered()
+                .markers()
+                .enabled(true)
+                .type('circle')
+                .size(4)
+                .stroke('1.5 #fff');
+        };
+
+
+        var series;
+        series = chart.area(firstSeriesData);
+        setupSeries(series, 'Траты на рекламу');
+        series = chart.area(secondSeriesData);
+        setupSeries(series, 'Лиды с сайта');
+        chart.legend().enabled(true).fontSize(13).padding([0, 0, 20, 0]);
+        chart.yGrid().stroke('#ddd');
+        chart.xGrid().stroke('#ddd');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function getData() {
+        return [
+            ['@data_[11].Month', @costs[11], @leads[11] * 100],
+            ['@data_[10].Month', @costs[10], @leads[10]* 100],
+            ['@data_[9].Month', @costs[9], @leads[9]* 100],
+            ['@data_[8].Month', @costs[8], @leads[8]* 100],
+            ['@data_[7].Month', @costs[7], @leads[7]* 100],
+            ['@data_[6].Month', @costs[6], @leads[6]* 100],
+            ['@data_[5].Month', @costs[5], @leads[5]* 100],
+            ['@data_[4].Month', @costs[4], @leads[4]* 100],
+            ['@data_[3].Month', @costs[3], @leads[3]* 100],
+            ['@data_[2].Month', @costs[2], @leads[2]* 100],
+            ['@data_[1].Month', @costs[1], @leads[1]* 100],
+            ['@data_[0].Month', @costs[0], @leads[0]* 100]
+        ];
+    }
+
+    anychart.onDocumentReady(function () {
+
+        var dataSet = anychart.data.set(getData2());
+
+        var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+        var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+
+
+
+        var chart = anychart.area();
+        chart.animation(true);
+        var crosshair = chart.crosshair();
+        crosshair.enabled(true).yLabel(false).yStroke(null).xStroke('#fff');
+
+
+        chart.title(
+            'Заявки с соц. сетей и с телефона'
+        );
+
+
+        chart.interactivity().hoverMode('by-x');
+        chart.tooltip().displayMode('union');
+
+        chart.yAxis(0).labels().format('{%Value}');
+        chart.xAxis(1).orientation('top');
+        chart.yAxis(1).orientation('right').labels(false);
+
+        chart.tooltip().format('{%SeriesName}: {%Value}');
+
+        var setupSeries = function (series, name) {
+            series.name(name);
+            series.markers().zIndex(100);
+            series
+                .hovered()
+                .markers()
+                .enabled(true)
+                .type('circle')
+                .size(4)
+                .stroke('1.5 #fff');
+        };
+
+
+        var series;
+        series = chart.area(firstSeriesData);
+        setupSeries(series, 'Соц. сети');
+        series = chart.area(secondSeriesData);
+        setupSeries(series, 'Телефон');
+        chart.legend().enabled(true).fontSize(13).padding([0, 0, 20, 0]);
+        chart.yGrid().stroke('#ddd');
+        chart.xGrid().stroke('#ddd');
+        chart.container('container_');
+        chart.draw();
+    });
+
+    function getData2() {
+        return [
+            ['@data_[11].Month', @social[11], @phone[11]],
+            ['@data_[10].Month', @social[10], @phone[10]],
+            ['@data_[9].Month', @social[9], @phone[9]],
+            ['@data_[8].Month', @social[8], @phone[8]],
+            ['@data_[7].Month', @social[7], @phone[7]],
+            ['@data_[6].Month', @social[6], @phone[6]],
+            ['@data_[5].Month', @social[5], @phone[5]],
+            ['@data_[4].Month', @social[4], @phone[4]],
+            ['@data_[3].Month', @social[3], @phone[3]],
+            ['@data_[2].Month', @social[2], @phone[2]],
+            ['@data_[1].Month', @social[1], @phone[1]],
+            ['@data_[0].Month', @social[0], @phone[0]]
+        ];
+    }
+
+    anychart.onDocumentReady(function () {
+
+        anychart.theme('morning');
+
+        var chart = anychart.pie([
+            ['@data_[11].Month',@sales_c[11]],
+            ['@data_[10].Month',@sales_c[10]],
+            ['@data_[9].Month',@sales_c[9]],
+            ['@data_[8].Month',@sales_c[8]],
+            ['@data_[7].Month',@sales_c[7]],
+            ['@data_[6].Month',@sales_c[6]],
+            ['@data_[5].Month',@sales_c[5]],
+            ['@data_[4].Month',@sales_c[4]],
+            ['@data_[3].Month',@sales_c[3]],
+            ['@data_[2].Month',@sales_c[2]],
+            ['@data_[1].Month',@sales_c[1]],
+            ['@data_[0].Month',@sales_c[0]],
+        ]);
+
+        chart
+            .title('Общий объем продаж (шт)')
+            .radius('55%')
+            .innerRadius('30%');
+
+        chart.container('container_pie_count');
+        chart.draw();
+    });
+
+        </script>
+    }
+    else
+    {
+        <script>
+            var content_conteiner = document.getElementById('cont_new_visitors');
+            var content_conteiner_enter = document.getElementById('container_err');
+
+            content_conteiner.classList.remove('hi');
+            content_conteiner_enter.classList.remove('hi');
+
+
+            content_conteiner.textContent = 'Для составления графического анализа необходимы данные за посление 12 месяцев';
+            content_conteiner_enter.textContent = 'Введите данные в универсальный отчет';
+        </script>
+    }
+}

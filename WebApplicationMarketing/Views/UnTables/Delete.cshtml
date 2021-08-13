@@ -1,0 +1,58 @@
+﻿@model WebApplicationMarketing.Models_.UnTable
+
+@{
+    ViewData["Title"] = "Удалить";
+}
+
+<h3>Удалить</h3>
+
+<h5>Вы действительно хотите удалить данную запись?</h5>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Объём продаж (руб)</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sales)
+        </dd>
+        <dt class="col-sm-2">Объём продаж (шт)</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesCount)
+        </dd>
+        <dt class="col-sm-2">Расход на рекламу</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AdvertisingCosts)
+        </dd>
+        <dt class="col-sm-2">Новые посетители</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NewVisitors)
+        </dd>
+        <dt class="col-sm-2">Лиды с сайта</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SiteLeads)
+        </dd>
+        <dt class="col-sm-2">Новые клиенты</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NewClient)
+        </dd>
+        <dt class="col-sm-2">Заявки с телефона</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicPhone)
+        </dd>
+        <dt class="col-sm-2">
+            Заявки с соц. сетей
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicSocial)
+        </dd>
+        <dt class="col-sm-2">Дата</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataMonth)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdUt" />
+        <input type="submit" value="Удалить" class="btn btn-danger" style="margin-right: 10px;" />
+        <a class="btn btn-success" asp-action="Index">Отмена</a>
+    </form>
+</div>

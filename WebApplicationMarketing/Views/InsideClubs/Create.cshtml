@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNet.Identity;
+@model WebApplicationMarketing.Models_.InsideClub
+
+@{
+    ViewData["Title"] = "Добавить данные";
+    string id_user = User.Identity.GetUserId();
+}
+
+<h3>Добавить данные</h3>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GuestVisits" class="control-label">Гостевые визиты</label>
+                <input asp-for="GuestVisits" class="form-control" />
+                <span asp-validation-for="GuestVisits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CallsMopPhone" class="control-label">Звонки на телефон МОП</label>
+                <input asp-for="CallsMopPhone" class="form-control" />
+                <span asp-validation-for="CallsMopPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CallsReceptPhone" class="control-label">Звонки на телефон рецепция</label>
+                <input asp-for="CallsReceptPhone" class="form-control" />
+                <span asp-validation-for="CallsReceptPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Calltracking" class="control-label">Коллтрекинг, сквозаня аналитика лиды</label>
+                <input asp-for="Calltracking" class="form-control" />
+                <span asp-validation-for="Calltracking" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OtherLeads" class="control-label">Другие лиды</label>
+                <input asp-for="OtherLeads" class="form-control" />
+                <span asp-validation-for="OtherLeads" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataMonth" class="control-label">Дата</label>
+                <input asp-for="DataMonth" class="form-control" />
+                <span asp-validation-for="DataMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <input asp-for="Id" class="input-none" value="@id_user" readonly />
+                @*<select asp-for="Id" class="form-control" asp-items="ViewBag.Id"></select>*@
+            </div>
+        </form>
+    </div>
+</div>
+

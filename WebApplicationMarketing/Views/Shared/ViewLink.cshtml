@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebApplicationMarketing.Data_;
+@using WebApplicationMarketing.Models_;
+@using Newtonsoft.Json;
+@using Nancy.Json;
+
+@inject SignInManager<IdentityUser> SignInManager
+@{
+    ViewData["Title"] = "ViewLink";
+}
+
+@*@if (Convert.ToString(this.User.Identity.Name) == "test2@mail.ru")
+    {}*@
+
+
+
+
+<a class="btn btn-warning btn-page" asp-controller="Addlinks" asp-action="Index">Отчеты ссылки</a>
+<hr />
+<p>ТАБЛИЦЫ</p>
+<div id="tables-add">
+
+    <a class="btn btn-primary btn-page" asp-controller="UnTables" asp-action="Index">Универсальный отчет</a>
+
+    @{
+        MyappdbContext db = new MyappdbContext();
+
+        List<SettingTable> tb;
+        tb = (from m in db.SettingTables
+              select m).ToList();
+
+
+        var query = (from t in tb
+                     join g in db.AspNetUsers on t.Id equals g.Id
+                     where t.IdNavigation.UserName == this.User.Identity.Name
+                     select new
+                     {
+                         t.IncomingTraffics,
+                         t.InsideClubs,
+                         t.KeysIndicators,
+                         t.OnlinePays,
+                         t.SocialMediums,
+                     }).ToList();
+
+        if (query.Count() != 0)
+        {
+
+            if (query[0].IncomingTraffics == true)
+            {
+                <a class="btn btn-primary btn-page" asp-controller="IncomingTraffics" asp-action="Index">Входящий трафик</a>
+            }
+            if (query[0].InsideClubs == true)
+            {
+                <a class="btn btn-primary btn-page" asp-controller="InsideClubs" asp-action="Index">Внутри клуба</a>
+            }
+            if (query[0].KeysIndicators == true)
+            {
+                <a class="btn btn-primary btn-page" asp-controller="KeyIndicators" asp-action="Index">Ключевые показатели</a>
+            }
+            if (query[0].OnlinePays == true)
+            {
+                <a class="btn btn-primary btn-page" asp-controller="OnlinePays" asp-action="Index">Онлайн покупки</a>
+            }
+            if (query[0].SocialMediums == true)
+            {
+                <a class="btn btn-primary btn-page" asp-controller="SocialMediums" asp-action="Index">Социальные сети</a>
+            }
+        }
+
+    }
+
+</div>
+<hr />
+<a class="btn btn-info btn-page" asp-area="Identity" asp-page="Forecast">Анализ данных</a>
+
+

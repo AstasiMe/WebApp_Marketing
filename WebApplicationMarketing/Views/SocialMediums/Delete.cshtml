@@ -1,0 +1,28 @@
+﻿@model WebApplicationMarketing.Models_.SocialMedium
+
+@{
+    ViewData["Title"] = "Удалить";
+}
+
+<h3>Удалить данные</h3>
+
+<h5>Вы уверены что хотите удалить эти данные?</h5>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">Лиды с ВКонтакте</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.LeadsVk)
+        </dd>
+        <dt class="col-sm-4">Другие лиды</dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.OtherLeads)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdSm" />
+        <input type="submit" value="Удалить" class="btn btn-danger" style="margin-right: 10px;" />
+        <a class="btn btn-success" asp-action="Index">Отмена</a>
+    </form>
+</div>

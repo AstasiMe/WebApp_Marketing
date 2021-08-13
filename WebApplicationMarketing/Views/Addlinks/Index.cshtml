@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<WebApplicationMarketing.Models_.Addlink>
+
+@{
+    ViewData["Title"] = "Отчеты";
+
+
+    <h3>Отчеты</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="link_google">
+                @{
+                    int count = 0;
+                    @foreach (var item in Model)
+                    {
+                        @if (Convert.ToString(item.IdNavigation.UserName) == this.User.Identity.Name)
+                        {
+                            count++;
+                            @if (count != 0)
+                            {
+                                <hr />
+                                <h5>Сторонние сайты</h5>
+                                <button class="btn btn-outline-primary" style="margin-right: 10px;"
+                                        onclick="window.open('@Html.DisplayFor(modelItem => item.GaLink)')">
+                                    ОТЧЁТ GOOGLE
+                                </button>
+                                <button class="btn btn-outline-primary"
+                                        onclick="window.open('@Html.DisplayFor(modelItem => item.YandexLink)')">
+                                    ОТЧЁТ YANDEX
+                                </button>
+                                <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdLink"
+                                   style="margin-left: 25px;">Удалить</a>
+                                <hr />
+                            }
+                        }
+                    }
+                    @if (count == 0)
+                    {
+                        <hr />
+                        <h5>У Вас пока нет добавленных ссылок</h5>
+                        <p>
+                            <a type="button" class="btn btn-success" asp-action="Create">Добавить ссылки</a>
+                        </p>
+                        <hr />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+}

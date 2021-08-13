@@ -1,0 +1,62 @@
+﻿@model WebApplicationMarketing.Models_.SettingTable
+
+@{
+    ViewData["Title"] = "Настройка таблиц";
+}
+<h3>Настройка набора таблиц</h3>
+<h5>Вы действительно хотите изменить набор таблиц?</h5>
+<div>
+    <hr />
+    <table class="table">
+        <thead>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 1) == true)
+                        { <p>Входящий трафик</p>}
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 2) == true)
+                        { <p>Внутри клуба</p>}
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 3) == true)
+                        { <p>Ключевые показатели</p>}
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 4) == true)
+                        { <p>Онлайн покупки</p>}
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @{
+                        if (MethodClass.GetElement(this.User.Identity.Name, 5) == true)
+                        { <p>Социальные сети</p>}
+                    }
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdSt" />
+        <input type="submit" value="Обновить" class="btn btn-danger" />
+    </form>
+</div>

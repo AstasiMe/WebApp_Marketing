@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Мой профиль";
+}
+
+<div class="container-content">
+
+    <div class="row">
+        <div class="col-md-2">
+            <partial name="ViewLink" />
+        </div>
+        <div class="col-md-8">
+            <h5>секция 2</h5>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="col-md-2">
+            @RenderBody()
+            <div class="calendar_section">
+                <table id="calendar">
+                    <thead>
+                        <tr>
+                            <td><b>‹</b>
+                            <td colspan="5">
+                            <td><b>›</b>
+                        <tr class="dn"><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="todolist_section">
+                <h6 class="todo__caption">Список задач</h6>
+                <div id="tdlApp">
+                    <input type="text" class="form-control" placeholder="Новая задача">
+                    <div class="tdlDiv">
+                        <ul class="tdList list-unstyled">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
